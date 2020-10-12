@@ -33,6 +33,7 @@ fun main() {
     println(whatShouldIDoToday("sad"))
     print("How do you feel?")
     println(whatShouldIDoToday(readLine()!!))
+    gamePlay(rollDice2(4))
 }
 
 fun getFortuneCookie(birthday: Int): String {
@@ -74,6 +75,55 @@ fun whatShouldIDoToday(mood: String, weather: String = "sunny", temperature: Int
 
 
 fun isVeryHot(temperature: Int) = temperature > 35
-fun isSadRainyCold(mood: String, weather: String, temperature: Int) = mood == "sad" && weather == "rainy" && temperature == 0
+fun isSadRainyCold(mood: String, weather: String, temperature: Int) =
+    mood == "sad" && weather == "rainy" && temperature == 0
+
 fun isHappySunny(mood: String, weather: String) = mood == "happy" && weather == "sunny"
+
+
+// var spices = listOf("curry", "pepper", "cayenne", "ginger", "red curry", "green curry", "red pepper")
+// Sorting curries by string length
+//
+// spices.filter { it.contains("curry") }.sortedBy { it.length }
+//
+// Filtering by those that start with 'c' and end with 'e'
+//
+// spices.filter{it.startsWith('c')}.filter{it.endsWith('e')}
+// > [cayenne]
+//
+//  OR
+//
+// spices.filter { {it.startsWith('c') && it.endsWith('e') }
+// > [cayenne]
+//
+// Filtering the first 3 items by 'c'
+//
+// spices.take(3).filter{it.startsWith('c')}
+// > [curry, cayenne]
+// var spices = listOf("curry", "pepper", "cayenne", "ginger", "red curry", "green curry", "red pepper")
+// var filtered = spices.filter{it.contains("curry")}.sortedBy{it.length}
+// println(filtered)
+
+
+val rollDice = { Random().nextInt(12) + 1 }
+
+val rollDiceB = { sides: Int ->
+    Random().nextInt(sides) + 1
+}
+
+val rollDice0 = { sides: Int ->
+    if (sides == 0) 0
+    else Random().nextInt(sides) + 1
+}
+
+val rollDice2: (Int) -> Int = { sides ->
+    if (sides == 0) 0
+    else Random().nextInt(sides) + 1
+}
+
+fun gamePlay(diceRoll: Int){
+    // do something with the dice roll
+    println(diceRoll)
+}
+
 
